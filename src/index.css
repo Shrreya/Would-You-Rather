@@ -12,11 +12,19 @@ body {
 .signin-container {
   margin: auto;
   width: 30%;
-  height: 300px;
+  height: auto;
   border: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+}
+
+.signin-image {
+  max-width:50%;
+  max-height:50%;
+  vertical-align: middle;
   padding: 10px;
 }
 
-p {
-  text-align: center;
+.user-select {
+  padding: 10px;
 }
