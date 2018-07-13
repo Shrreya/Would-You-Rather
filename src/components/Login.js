@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import user_question from '../assets/user_question.svg';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
@@ -6,8 +7,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
-import { connect } from 'react-redux';
-import { setAuthedUser } from '../actions/authedUser';
 
 // Override theme properties to be used by select & button components
 const theme = createMuiTheme({
@@ -24,10 +23,12 @@ function TransitionUp(props) {
 
 class Login extends Component {
 
-  // Component state contains selected user_id and boolean to display snackbar alert
+  // Component state contains selected user_id, boolean to display snackbar alert
+  // & boolean to navigate to home page
   state = {
     user_id: 'none',
-    open: false
+    open: false,
+    toHome: false
   }
 
   // Update selected user_id
@@ -41,10 +42,9 @@ class Login extends Component {
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
     }
-    // Set authed user and navigate to home if user is selected
+    // Navigate to home if user is selected
     else {
-      this.props.dispatch(setAuthedUser(this.state.user_id));
-      this.props.history.push('/home');
+      this.setState({ toHome: true });
     }
   }
 
@@ -54,6 +54,17 @@ class Login extends Component {
   };
 
   render() {
+
+    // Redirect to home page with selected user_id
+    if (this.state.toHome) {
+      return <Redirect to={{
+        pathname: '/home',
+        state: {
+          user_id: this.state.user_id
+        }
+      }} />
+    }
+
     return (
       <div>
         <h1 className='title'>Would You Rather...</h1>
@@ -94,6 +105,4 @@ class Login extends Component {
   }
 }
 
-// Connected component or container component can read state from the store
-// & dispatch actions.
-export default connect()(Login);
+export default Login;
