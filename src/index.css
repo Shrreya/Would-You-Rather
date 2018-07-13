@@ -9,7 +9,7 @@ body {
   color: #00897B;
 }
 
-.signin-container {
+.login-container {
   margin: auto;
   width: 30%;
   height: auto;
@@ -18,7 +18,7 @@ body {
   text-align: center;
 }
 
-.signin-image {
+.login-image {
   max-width:50%;
   max-height:50%;
   vertical-align: middle;

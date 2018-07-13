@@ -4,18 +4,25 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import Slide from '@material-ui/core/Slide';
 
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#F85A6A' },
-    secondary: { main: '#00897B'}
+    secondary: { main: '#00897B' }
   }
 });
+
+function TransitionUp(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 class Login extends Component {
 
   state = {
-    user_id: 'none'
+    user_id: 'none',
+    open: false
   }
 
   handleChange = event => {
@@ -23,16 +30,23 @@ class Login extends Component {
   };
 
   handleClick = () => {
-    this.state.user_id === 'none' ? console.log('User not selected') :
-      console.log('User selected:', this.state.user_id);
+    if (this.state.user_id === 'none') {
+      this.setState({ open: true });
+    } else {
+      console.log("Ready to log in user:", this.state.user_id);
+    }
   }
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     return (
       <div>
         <h1 className='title'>Would You Rather...</h1>
-        <div className='signin-container'>
-          <img className='signin-image' src={user_question} alt='' />
+        <div className='login-container'>
+          <img className='login-image' src={user_question} alt='' />
           <MuiThemeProvider theme={theme}>
             <div className='user-select'>
               <Select
@@ -54,7 +68,14 @@ class Login extends Component {
             >
               Log In
             </Button>
-          </MuiThemeProvider>
+            <Snackbar
+              open={this.state.open}
+              onClose={this.handleClose}
+              TransitionComponent={TransitionUp}
+              autoHideDuration={2000}
+              message={<span id="message-id">Please select a user before logging in!</span>}
+            />
+            </MuiThemeProvider>
         </div>
       </div>
     )
