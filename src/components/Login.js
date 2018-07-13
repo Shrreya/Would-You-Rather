@@ -9,6 +9,7 @@ import Slide from '@material-ui/core/Slide';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
+// Override theme properties to be used by select & button components
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#F85A6A' },
@@ -16,30 +17,38 @@ const theme = createMuiTheme({
   }
 });
 
+// Slide up transition for snackbar component
 function TransitionUp(props) {
   return <Slide {...props} direction="up" />;
 }
 
 class Login extends Component {
 
+  // Component state contains selected user_id and boolean to display snackbar alert
   state = {
     user_id: 'none',
     open: false
   }
 
+  // Update selected user_id
   handleChange = event => {
     this.setState({ user_id: event.target.value });
   };
 
+  // Handle sign in button click
   handleClick = () => {
+    // Display snackbar alert if no user is selected
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
-    } else {
+    }
+    // Set authed user and navigate to home if user is selected
+    else {
       this.props.dispatch(setAuthedUser(this.state.user_id));
       this.props.history.push('/home');
     }
   }
 
+  // Handle close of snackbar
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -85,4 +94,6 @@ class Login extends Component {
   }
 }
 
+// Connected component or container component can read state from the store
+// & dispatch actions.
 export default connect()(Login);
