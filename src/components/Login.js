@@ -6,6 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
+import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 
 const theme = createMuiTheme({
   palette: {
@@ -33,7 +35,8 @@ class Login extends Component {
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
     } else {
-      console.log("Ready to log in user:", this.state.user_id);
+      this.props.dispatch(setAuthedUser(this.state.user_id));
+      this.props.history.push('/home');
     }
   }
 
@@ -82,4 +85,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect()(Login);
