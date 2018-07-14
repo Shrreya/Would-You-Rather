@@ -33,6 +33,11 @@ class Home extends Component {
   }
 
   render() {
+
+    const questionIds = this.state.value === 0
+      ? this.props.unansweredIds
+      : this.props.answeredIds;
+      
     return (
       <div className='home'>
         {
@@ -59,7 +64,7 @@ class Home extends Component {
               </MuiThemeProvider>
               <div style={{ border: '0.5px solid #e7e7e7', margin: '0px 150px'}}>
                 <ul>
-                  {this.props.unansweredIds.map((id) => (
+                  {questionIds.map((id) => (
                     <li key={id}>
                       <div>QUESTION ID: {id}</div>
                     </li>
