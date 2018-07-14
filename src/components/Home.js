@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
+import { sortByTime, getUnanswered } from '../utils/helpers';
 import Nav from './Nav';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -58,7 +59,7 @@ class Home extends Component {
               </MuiThemeProvider>
               <div style={{ border: '0.5px solid #e7e7e7', margin: '0px 150px'}}>
                 <ul>
-                  {this.props.questionIds.map((id) => (
+                  {this.props.unansweredIds.map((id) => (
                     <li key={id}>
                       <div>QUESTION ID: {id}</div>
                     </li>
@@ -72,11 +73,14 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ questions, authedUser }) {
+function mapStateToProps({ questions, users, authedUser }) {
+  const user = users[authedUser];
+  const answeredIds = user ? Object.keys(user['answers']) : [];
+  const unansweredIds = user ? getUnanswered(Object.keys(questions), answeredIds) : [];
   return {
     loading: authedUser === null,
-    questionIds: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    answeredIds: sortByTime(questions, answeredIds),
+    unansweredIds: sortByTime(questions, unansweredIds)
   }
 }
 
