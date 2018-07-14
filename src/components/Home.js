@@ -34,40 +34,47 @@ class Home extends Component {
   render() {
     return (
       <div className='home'>
-        <Nav />
-        <MuiThemeProvider theme={theme}>
-          <div style={{
-            border: '0.5px solid #e7e7e7',
-            margin: '50px 150px 0px'
-          }}>
-            <Tabs
-              value={this.state.value}
-              onChange={this.handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              <Tab label="Unanswered" />
-              <Tab label="Answered" />
-            </Tabs>
-          </div>
-        </MuiThemeProvider>
-        <div style={{ border: '0.5px solid #e7e7e7', margin: '0px 150px'}}>
-          <ul>
-            {this.props.questionIds.map((id) => (
-              <li key={id}>
-                <div>QUESTION ID: {id}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {
+          this.props.loading
+            ? null
+            : <div>
+              <Nav />
+              <MuiThemeProvider theme={theme}>
+                <div style={{
+                  border: '0.5px solid #e7e7e7',
+                  margin: '50px 150px 0px'
+                }}>
+                  <Tabs
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    centered
+                  >
+                    <Tab label="Unanswered" />
+                    <Tab label="Answered" />
+                  </Tabs>
+                </div>
+              </MuiThemeProvider>
+              <div style={{ border: '0.5px solid #e7e7e7', margin: '0px 150px'}}>
+                <ul>
+                  {this.props.questionIds.map((id) => (
+                    <li key={id}>
+                      <div>QUESTION ID: {id}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+        }
       </div>
     );
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, authedUser }) {
   return {
+    loading: authedUser === null,
     questionIds: Object.keys(questions)
       .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
   }
