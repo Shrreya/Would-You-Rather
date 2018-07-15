@@ -46,10 +46,7 @@ class Home extends Component {
             : <div>
               <Nav />
               <MuiThemeProvider theme={theme}>
-                <div style={{
-                  border: '0.5px solid #e7e7e7',
-                  margin: '50px 150px 0px'
-                }}>
+                <div className='tabs-container'>
                   <Tabs
                     value={this.state.value}
                     onChange={this.handleChange}
@@ -62,7 +59,7 @@ class Home extends Component {
                   </Tabs>
                 </div>
               </MuiThemeProvider>
-              <div style={{ border: '0.5px solid #e7e7e7', margin: '0px 150px'}}>
+              <div className='questions-container'>
                 <ul>
                   {questionIds.map((id) => (
                     <li key={id}>
