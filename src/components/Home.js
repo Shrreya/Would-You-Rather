@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import { sortByTime, getUnanswered } from '../utils/helpers';
 import Nav from './Nav';
+import Question from './Question';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -63,7 +64,7 @@ class Home extends Component {
                 <ul>
                   {questionIds.map((id) => (
                     <li key={id}>
-                      <div>QUESTION ID: {id}</div>
+                      <Question id={id} view={this.state.value} />
                     </li>
                   ))}
                 </ul>

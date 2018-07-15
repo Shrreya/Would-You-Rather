@@ -93,3 +93,47 @@ body {
 .questions-container ul li {
   padding: 10px;
 }
+
+/* Question */
+
+.question {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  position: relative;
+}
+
+.question-info {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.author {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.date {
+  color: #969696;
+  font-size: 12px;
+}
+
+.question-info h3 {
+  color: #00897B;
+}
+
+.option-preview {
+  color: #666;
+}
+
+.view-button-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
