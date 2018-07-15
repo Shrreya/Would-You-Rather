@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { formatDate } from '../utils/helpers';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -14,14 +16,16 @@ class Question extends Component {
 
   render() {
 
+    const { authorName, authorAvatar, date, optionPreview } = this.props;
+
     return (
       <div className='question'>
-        <Avatar alt='' src={require('../assets/sarahedo.jpg')}/>
+        <Avatar alt='' src={require('../assets/' + authorAvatar)}/>
         <div className='question-info'>
-          <span className='author'>Sarah Edo</span>
-          <div className='date'>15/07/2018</div>
+          <span className='author'>{authorName}</span>
+          <div className='date'>{date}</div>
           <h3>Would you rather</h3>
-          <span className='option-preview'>have horrible short term ...</span>
+          <span className='option-preview'>{optionPreview} ...</span>
         </div>
         <div className='view-button-container'>
           <MuiThemeProvider theme={theme}>
@@ -39,4 +43,14 @@ class Question extends Component {
   }
 }
 
-export default Question;
+function mapStateToProps({ questions, users }, { id }) {
+  const question = questions[id];
+  return {
+    authorName: users[question['author']]['name'],
+    authorAvatar: users[question['author']]['avatarURL'],
+    date: formatDate(question['timestamp']),
+    optionPreview: question['optionOne']['text']
+  }
+}
+
+export default connect(mapStateToProps)(Question);
