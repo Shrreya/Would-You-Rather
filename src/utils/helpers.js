@@ -7,3 +7,8 @@ export function getUnanswered(questionIds, answeredIds) {
   return questionIds
     .filter(questionId => !(answeredIds.includes(questionId)));
 }
+
+export function formatDate (timestamp) {
+  const d = new Date(timestamp);
+  return d.toLocaleTimeString('en-US') + ' | ' + d.toLocaleDateString();
+}
