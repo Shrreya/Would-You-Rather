@@ -42,10 +42,9 @@ class Home extends Component {
 
     return (
       <div className='home'>
-        <LoadingBar style={{ backgroundColor: '#00897B'}}/>
         {
           this.props.loading
-            ? null
+            ? <LoadingBar style={{ backgroundColor: '#00897B'}}/>
             : <div>
               <Nav />
               <MuiThemeProvider theme={theme}>
