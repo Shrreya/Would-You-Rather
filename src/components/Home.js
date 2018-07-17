@@ -7,6 +7,7 @@ import Question from './Question';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import LoadingBar from 'react-redux-loading';
 
 // Override theme properties to be used by tab components
 const theme = createMuiTheme({
@@ -38,9 +39,10 @@ class Home extends Component {
     const questionIds = this.state.value === 0
       ? this.props.unansweredIds
       : this.props.answeredIds;
-      
+
     return (
       <div className='home'>
+        <LoadingBar style={{ backgroundColor: '#00897B'}}/>
         {
           this.props.loading
             ? null
