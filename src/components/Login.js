@@ -66,7 +66,7 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <div className='login'>
         <h1 className='title'>Would You Rather...</h1>
         <div className='login-container'>
           <img className='login-image' src={user_question} alt='' />
