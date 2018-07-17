@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { formatDate } from '../utils/helpers';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -16,7 +17,7 @@ class Question extends Component {
 
   render() {
 
-    const { authorName, authorAvatar, date, optionPreview } = this.props;
+    const { authorName, authorAvatar, date, optionPreview, id } = this.props;
 
     return (
       <div className='question'>
@@ -33,6 +34,8 @@ class Question extends Component {
               variant='outlined'
               size='small'
               color='primary'
+              component={Link}
+              to={`/questions/${id}`}
             >
               View
             </Button>
