@@ -7,6 +7,8 @@ class Nav extends Component {
 
   render() {
 
+    const { userName, userAvatar } = this.props;
+
     return (
       <div className='nav'>
         <ul className='nav-list'>
@@ -25,16 +27,16 @@ class Nav extends Component {
               Leaderboard
             </NavLink>
           </li>
-          <li className='nav-item' style={{ float: 'right' }}>
+          <li className='nav-item logout'>
             <NavLink to='/' exact activeClassName='active'>
               Log out
             </NavLink>
           </li>
-          <li className='user-greeting' style={{ float: 'right' }}>
-            <span>Hey, {this.props.user_name}!</span>
+          <li className='user-greeting'>
+            <span>Hey, {userName}!</span>
           </li>
-          <li style={{ float: 'right', paddingTop: '2px' }}>
-            <Avatar alt='' src={require('../assets/' + this.props.user_avatar)}/>
+          <li className='user-avatar'>
+            <Avatar alt='' src={require('../assets/' + userAvatar)}/>
           </li>
         </ul>
       </div>
@@ -45,8 +47,8 @@ class Nav extends Component {
 function mapStateToProps ({ users, authedUser }) {
   const user = users[authedUser];
   return {
-    user_name: user ? user['name'] : '',
-    user_avatar: user ? user['avatarURL'] : ''
+    userName: user ? user['name'] : '',
+    userAvatar: user ? user['avatarURL'] : ''
   }
 }
 

@@ -69,7 +69,18 @@ body {
   text-align: center;
   padding-top: 14px;
   padding-left: 5px;
+  padding-right: 16px;
   text-decoration: none;
+  float: right;
+}
+
+.user-avatar {
+  float: right;
+  padding-top: 2px;
+}
+
+.logout {
+  float: right;
 }
 
 /* Home Page */
