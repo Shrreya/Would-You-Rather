@@ -65,7 +65,7 @@ class Home extends Component {
                 <ul>
                   {questionIds.map((id) => (
                     <li key={id}>
-                      <Question id={id} view={this.state.value} />
+                      <Question id={id} />
                     </li>
                   ))}
                 </ul>
