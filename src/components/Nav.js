@@ -36,7 +36,7 @@ class Nav extends Component {
             <span>Hey, {userName}!</span>
           </li>
           <li className='user-avatar'>
-            <Avatar alt='' src={require('../assets/' + userAvatar)}/>
+            <Avatar alt='avatar' src={require('../assets/' + userAvatar)}/>
           </li>
         </ul>
       </div>

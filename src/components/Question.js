@@ -21,7 +21,7 @@ class Question extends Component {
 
     return (
       <div className='question'>
-        <Avatar alt='' src={require('../assets/' + authorAvatar)}/>
+        <Avatar alt='avatar' src={require('../assets/' + authorAvatar)}/>
         <div className='question-info'>
           <span className='author'>{authorName}</span>
           <div className='date'>{date}</div>

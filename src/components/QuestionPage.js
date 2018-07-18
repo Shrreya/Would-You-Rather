@@ -23,7 +23,7 @@ class QuestionPage extends Component {
     return (
       <div className='question-page'>
         <Nav />
-        <img className='big-avatar' alt='' src={require('../assets/' + authorAvatar)}/>
+        <img className='big-avatar' alt='big avatar' src={require('../assets/' + authorAvatar)}/>
         <span className='author-prompt'>{authorName} asks</span>
         <h2>Would you rather ...</h2>
         {

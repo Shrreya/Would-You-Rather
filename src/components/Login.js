@@ -69,7 +69,7 @@ class Login extends Component {
       <div className='login'>
         <h1 className='title'>Would You Rather...</h1>
         <div className='login-container'>
-          <img className='login-image' src={user_question} alt='' />
+          <img className='login-image' src={user_question} alt='login image' />
           <MuiThemeProvider theme={theme}>
             <div className='user-select'>
               <Select
