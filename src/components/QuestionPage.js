@@ -14,8 +14,18 @@ class QuestionPage extends Component {
 
   render() {
 
+    const { question } = this.props;
+
+    if (question === null) {
+      return (
+        <div className='question-page'>
+          <p>This question does not exist!</p>
+        </div>
+      );
+    }
+
     const { hasAnswered, authorName, authorAvatar, optionOne, optionTwo,
-      answer, optionOneVotes, optionTwoVotes } = this.props.question;
+      answer, optionOneVotes, optionTwoVotes } = question;
 
     const totalVotes = optionOneVotes + optionTwoVotes;
     const optionOnePerc = getPercentVotes(optionOneVotes, totalVotes);
