@@ -12,3 +12,7 @@ export function formatDate (timestamp) {
   const d = new Date(timestamp);
   return d.toLocaleTimeString('en-US') + ' | ' + d.toLocaleDateString();
 }
+
+export function getPercentVotes (optionVotes, totalVotes) {
+  return Math.round((optionVotes / totalVotes ) * 100).toString();
+}

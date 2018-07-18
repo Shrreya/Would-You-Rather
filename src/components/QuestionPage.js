@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Nav from './Nav';
 import { Line } from 'rc-progress';
 import { handleAnswer } from '../actions/shared';
+import { getPercentVotes } from '../utils/helpers';
 
 class QuestionPage extends Component {
 
@@ -17,8 +18,8 @@ class QuestionPage extends Component {
       answer, optionOneVotes, optionTwoVotes } = this.props;
 
     const totalVotes = optionOneVotes + optionTwoVotes;
-    const optionOnePerc = ((optionOneVotes / totalVotes ) * 100).toString();
-    const optionTwoPerc = ((optionTwoVotes / totalVotes ) * 100).toString();
+    const optionOnePerc = getPercentVotes(optionOneVotes, totalVotes);
+    const optionTwoPerc = getPercentVotes(optionTwoVotes, totalVotes);
 
     return (
       <div className='question-page'>
