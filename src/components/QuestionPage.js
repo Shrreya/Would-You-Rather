@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Nav from './Nav';
 import { Line } from 'rc-progress';
 import { handleAnswer } from '../actions/shared';
-import { getPercentVotes } from '../utils/helpers';
+import { getPercentVotes, formatQuestion } from '../utils/helpers';
 
 class QuestionPage extends Component {
 
@@ -15,7 +15,7 @@ class QuestionPage extends Component {
   render() {
 
     const { hasAnswered, authorName, authorAvatar, optionOne, optionTwo,
-      answer, optionOneVotes, optionTwoVotes } = this.props;
+      answer, optionOneVotes, optionTwoVotes } = this.props.question;
 
     const totalVotes = optionOneVotes + optionTwoVotes;
     const optionOnePerc = getPercentVotes(optionOneVotes, totalVotes);
@@ -77,18 +77,9 @@ class QuestionPage extends Component {
 function mapStateToProps({authedUser, questions, users}, props) {
   const { id } = props.match.params;
   const question = questions[id];
-  const hasAnswered = Object.keys(users[authedUser]['answers']).includes(id);
-  const answer = hasAnswered ? users[authedUser]['answers'][id] : '';
   return {
     qid: id,
-    hasAnswered,
-    authorName: users[question['author']]['name'],
-    authorAvatar: users[question['author']]['avatarURL'],
-    optionOne: question['optionOne']['text'],
-    optionTwo: question['optionTwo']['text'],
-    answer,
-    optionOneVotes: question['optionOne']['votes'].length,
-    optionTwoVotes: question['optionTwo']['votes'].length
+    question: question ? formatQuestion(question, users, authedUser) : null
   }
 }
 
