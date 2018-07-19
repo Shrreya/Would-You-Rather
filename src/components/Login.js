@@ -33,13 +33,11 @@ class Login extends Component {
     toHome: false
   }
 
-  // Update selected user_id
-  handleChange = event => {
+  handleUserChange = event => {
     this.setState({ user_id: event.target.value });
   };
 
-  // Handle sign in button click
-  handleClick = () => {
+  handleLogin = () => {
     // Display snackbar alert if no user is selected
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
@@ -51,8 +49,7 @@ class Login extends Component {
     }
   }
 
-  // Handle close of snackbar
-  handleClose = () => {
+  handleSnackbarClose = () => {
     this.setState({ open: false });
   };
 
@@ -69,12 +66,12 @@ class Login extends Component {
       <div className='login'>
         <h1 className='title'>Would You Rather...</h1>
         <div className='login-container'>
-          <img className='login-image' src={user_question} alt='login image' />
+          <img className='login-image' src={user_question} alt='login' />
           <MuiThemeProvider theme={theme}>
             <div className='user-select'>
               <Select
                 value={this.state.user_id}
-                onChange={this.handleChange}
+                onChange={this.handleUserChange}
               >
                 <MenuItem value='none'>
                   <em>Who's Playing?</em>
@@ -89,13 +86,13 @@ class Login extends Component {
             <Button
               variant='contained'
               color='secondary'
-              onClick={this.handleClick}
+              onClick={this.handleLogin}
             >
               Log In
             </Button>
             <Snackbar
               open={this.state.open}
-              onClose={this.handleClose}
+              onClose={this.handleSnackbarClose}
               TransitionComponent={TransitionUp}
               autoHideDuration={2000}
               message={<span id="message-id">Please select a user before logging in!</span>}
@@ -103,7 +100,7 @@ class Login extends Component {
             </MuiThemeProvider>
         </div>
       </div>
-    )
+    );
   }
 }
 
