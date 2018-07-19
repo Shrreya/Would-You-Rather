@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { setAuthedUser } from '../actions/authedUser';
 import user_question from '../assets/user_question.svg';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
@@ -42,8 +44,9 @@ class Login extends Component {
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
     }
-    // Navigate to home if user is selected
+    // Set authed user and navigate to home if user is selected
     else {
+      this.props.dispatch(setAuthedUser(this.state.user_id));
       this.setState({ toHome: true });
     }
   }
@@ -55,14 +58,11 @@ class Login extends Component {
 
   render() {
 
+    const { users } = this.props;
+
     // Redirect to home page with selected user_id
     if (this.state.toHome) {
-      return <Redirect to={{
-        pathname: '/home',
-        state: {
-          user_id: this.state.user_id
-        }
-      }} />
+      return <Redirect to={{ pathname: '/home' }} />
     }
 
     return (
@@ -79,9 +79,11 @@ class Login extends Component {
                 <MenuItem value='none'>
                   <em>Who's Playing?</em>
                 </MenuItem>
-                <MenuItem value='sarahedo'>Sarah Edo</MenuItem>
-                <MenuItem value='tylermcginnis'>Tyler McGinnis</MenuItem>
-                <MenuItem value='johndoe'>John Doe</MenuItem>
+                {
+                  Object.keys(users).map((user_id) => (
+                    <MenuItem key={user_id} value={user_id}>{users[user_id]['name']}</MenuItem>
+                  ))
+                }
               </Select>
             </div>
             <Button
@@ -105,4 +107,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps({ users }) {
+  return {
+    users
+  }
+}
+
+export default connect(mapStateToProps)(Login);
