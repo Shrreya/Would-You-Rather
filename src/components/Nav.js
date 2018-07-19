@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 import Avatar from '@material-ui/core/Avatar';
 
 class Nav extends Component {
+
+  handleLogout = () => {
+    this.props.dispatch(setAuthedUser(null));
+  }
 
   render() {
 
@@ -28,7 +33,7 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li className='nav-item logout'>
-            <NavLink to='/' exact activeClassName='active'>
+            <NavLink to='/' exact activeClassName='active' onClick={this.handleLogout}>
               Log out
             </NavLink>
           </li>
