@@ -32,3 +32,13 @@ export function formatQuestion (question, users, authedUser) {
     optionTwoVotes: question['optionTwo']['votes'].length
   }
 }
+
+export function prepareLeaderBoard (users) {
+  const leaderboard = Object.keys(users).map((user_id) => {
+    let leader = users[user_id];
+    leader['score'] = Object.keys(leader['answers']).length + leader['questions'].length;
+    return leader;
+  });
+
+  return leaderboard.sort((a,b) => b.score - a.score);
+}
