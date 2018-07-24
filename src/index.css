@@ -210,6 +210,7 @@ body {
 .option-chosen {
   border: 1px solid #00897B;
   background-color: #ECF6F5;
+  position: relative;
 }
 
 .text-chosen {
@@ -220,6 +221,12 @@ body {
   padding-right: 5px;
   width: 80%;
   height: 10px;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
 }
 
 /* Leaderboard */

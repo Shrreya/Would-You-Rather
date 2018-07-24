@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import { Line } from 'rc-progress';
+import check from '../assets/check.svg';
 import { handleAnswer } from '../actions/shared';
 import { getPercentVotes, formatQuestion } from '../utils/helpers';
 
@@ -44,6 +45,7 @@ class QuestionPage extends Component {
               <Line percent={optionOnePerc} strokeColor='#00897B' className='percentage'/>
               <span>{optionOnePerc}%</span>
               <div>{optionOneVotes} out of {totalVotes} votes</div>
+              <img alt='badge' src={check} className='badge'/>
             </div>
             <div className='option-close'>
               <div><strong>{optionTwo}?</strong></div>
@@ -66,6 +68,7 @@ class QuestionPage extends Component {
               <Line percent={optionTwoPerc} strokeColor='#00897B' className='percentage'/>
               <span>{optionTwoPerc}%</span>
               <div>{optionTwoVotes} out of {totalVotes} votes</div>
+              <img alt='badge' src={check} className='badge'/>
             </div>
           </div>
         }
