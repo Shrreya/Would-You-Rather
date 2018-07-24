@@ -221,3 +221,22 @@ body {
   width: 80%;
   height: 10px;
 }
+
+/* Leaderboard */
+
+.leaderboard-table {
+  padding-top: 100px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.small-avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.leader-name {
+  padding-left: 5px;
+}
