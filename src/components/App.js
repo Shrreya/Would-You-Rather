@@ -7,6 +7,7 @@ import Login from './Login';
 import Home from './Home';
 import QuestionPage from './QuestionPage';
 import Leaderboard from './Leaderboard';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
               <Route exact path='/home' component={Home} />
               <Route path='/questions/:id' component={QuestionPage} />
               <Route exact path='/leaderboard' component={Leaderboard} />
+              <Route exact path='/add' component={NewQuestion} />
             </div>
         }
       </Router>
