@@ -39,6 +39,7 @@ export function handleAnswer (qid, answer) {
 export function handleSaveQuestion (optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
+    dispatch(showLoading());
     return saveQuestion({
       author: authedUser,
       optionOneText,
@@ -47,6 +48,7 @@ export function handleSaveQuestion (optionOneText, optionTwoText) {
       .then((question) => {
         dispatch(addQuestion(question));
         dispatch(userQuestion(question));
+        dispatch(hideLoading());
       })
   }
 }
