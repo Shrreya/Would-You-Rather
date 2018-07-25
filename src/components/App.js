@@ -37,9 +37,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ users }) {
   return {
-    loading: questions === {}
+    loading: users === {}
   }
 }
 
