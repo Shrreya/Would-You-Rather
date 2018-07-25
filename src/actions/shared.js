@@ -5,6 +5,9 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 import { saveQuestionAnswer } from '../utils/api';
 import { questionAnswer } from '../actions/questions';
 import { userAnswer } from '../actions/users';
+import { saveQuestion } from '../utils/api';
+import { addQuestion } from '../actions/questions';
+import { userQuestion } from '../actions/users';
 
 export function handleInitialData () {
   return (dispatch) => {
@@ -29,6 +32,21 @@ export function handleAnswer (qid, answer) {
       .then(() => {
         dispatch(questionAnswer({authedUser, qid, answer}));
         dispatch(userAnswer({authedUser, qid, answer}))
+      })
+  }
+}
+
+export function handleSaveQuestion (optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    return saveQuestion({
+      author: authedUser,
+      optionOneText,
+      optionTwoText
+    })
+      .then((question) => {
+        dispatch(addQuestion(question));
+        dispatch(userQuestion(question));
       })
   }
 }
