@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { handleSaveQuestion } from '../actions/shared';
 import Nav from './Nav';
 import Button from '@material-ui/core/Button';
@@ -16,7 +17,8 @@ class NewQuestion extends Component {
 
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    toHome: false
   }
 
   handleOneChange = (e) => {
@@ -40,13 +42,18 @@ class NewQuestion extends Component {
     this.props.dispatch(handleSaveQuestion(optionOneText, optionTwoText));
     this.setState(() => ({
       optionOneText: '',
-      optionTwoText: ''
+      optionTwoText: '',
+      toHome: true
     }));
   }
 
   render() {
 
-    const { optionOneText, optionTwoText } = this.state;
+    const { optionOneText, optionTwoText, toHome } = this.state;
+
+    if (toHome) {
+      return <Redirect to={{ pathname: '/home' }} />
+    }
 
     return (
       <div className='new-question'>
