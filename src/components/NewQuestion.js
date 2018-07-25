@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { handleSaveQuestion } from '../actions/shared';
 import Nav from './Nav';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -32,8 +34,10 @@ class NewQuestion extends Component {
   }
 
   handleSubmit = (e) => {
-    // TODO: add new question to store & redirect to home page
     e.preventDefault();
+
+    const { optionOneText, optionTwoText } = this.state;
+    this.props.dispatch(handleSaveQuestion(optionOneText, optionTwoText));
     this.setState(() => ({
       optionOneText: '',
       optionTwoText: ''
@@ -77,4 +81,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default NewQuestion;
+export default connect()(NewQuestion);
