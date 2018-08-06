@@ -281,3 +281,12 @@ body {
   outline: none !important;
   border-color: #00897B;
 }
+
+/* 404 Page */
+.no-match {
+  text-align: center;
+}
+
+.no-match h3 {
+  color: #00897B;
+}

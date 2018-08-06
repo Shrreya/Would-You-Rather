@@ -1,13 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import Login from './Login';
 import Home from './Home';
 import QuestionPage from './QuestionPage';
 import Leaderboard from './Leaderboard';
 import NewQuestion from './NewQuestion';
+
+// Component to be rendered in case of a 404 no match
+const NoMatch = () => (
+  <div className='no-match'>
+    <h3>404! Cannot find this page at the moment.</h3>
+  </div>
+);
 
 class App extends Component {
 
@@ -24,12 +31,15 @@ class App extends Component {
             this.props.loading
               ? null
               : <div className='app'>
-                <Route exact path='/' component={Login} />
-                <Route exact path='/home' component={Home} />
-                <Route path='/questions/:id' component={QuestionPage} />
-                <Route exact path='/leaderboard' component={Leaderboard} />
-                <Route exact path='/add' component={NewQuestion} />
-              </div>
+                <Switch>
+                  <Route exact path='/' component={Login} />
+                  <Route exact path='/home' component={Home} />
+                  <Route path='/questions/:id' component={QuestionPage} />
+                  <Route exact path='/leaderboard' component={Leaderboard} />
+                  <Route exact path='/add' component={NewQuestion} />
+                  <Route component={NoMatch} />
+                </Switch>
+                </div>
           }
         </Fragment>
       </Router>
