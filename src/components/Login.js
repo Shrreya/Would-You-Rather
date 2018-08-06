@@ -19,11 +19,11 @@ function TransitionUp(props) {
 class Login extends Component {
 
   // Component state contains selected user_id, boolean to display snackbar alert
-  // & boolean to navigate to home page
+  // and boolean to indicate login
   state = {
     user_id: 'none',
     open: false,
-    toHome: false
+    loggedIn: false
   }
 
   handleUserChange = event => {
@@ -35,10 +35,10 @@ class Login extends Component {
     if (this.state.user_id === 'none') {
       this.setState({ open: true });
     }
-    // Set authed user and navigate to home if user is selected
+    // Set authed user & loggedIn if user is selected
     else {
       this.props.dispatch(setAuthedUser(this.state.user_id));
-      this.setState({ toHome: true });
+      this.setState({ loggedIn: true });
     }
   }
 
@@ -49,10 +49,14 @@ class Login extends Component {
   render() {
 
     const { users } = this.props;
+    let afterLogin = '/home';
+    if (this.props.location.state) {
+      afterLogin = this.props.location.state.afterLogin;
+    }
 
-    // Redirect to home page with selected user_id
-    if (this.state.toHome) {
-      return <Redirect to={{ pathname: '/home' }} />
+    // Redirect to required page after log in
+    if (this.state.loggedIn) {
+      return <Redirect to={afterLogin} />
     }
 
     return (

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { prepareLeaderBoard } from '../utils/helpers';
 import Nav from './Nav';
 import { withStyles } from "@material-ui/core/styles";
@@ -26,6 +27,15 @@ const LeaderTableCell = withStyles(theme => ({
 class Leaderboard extends Component {
 
   render() {
+
+    if (this.props.loggedOut) {
+      return <Redirect to={{
+        pathname: '/',
+        state: {
+          afterLogin: '/leaderboard'
+        }
+      }} />
+    }
 
     const { leaderboard } = this.props;
 
@@ -70,8 +80,9 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
+    loggedOut: authedUser === null ,
     leaderboard : prepareLeaderBoard(users)
   }
 }

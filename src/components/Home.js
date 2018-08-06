@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { sortByTime, getUnanswered } from '../utils/helpers';
 import Nav from './Nav';
 import Question from './Question';
@@ -22,6 +23,15 @@ class Home extends Component {
   };
 
   render() {
+
+    if (this.props.loggedOut) {
+      return <Redirect to={{
+        pathname: '/',
+        state: {
+          afterLogin: '/home'
+        }
+      }} />
+    }
 
     const questionIds = this.state.value === 0
       ? this.props.unansweredIds
@@ -63,6 +73,7 @@ function mapStateToProps({ questions, users, authedUser }) {
   const answeredIds = user ? Object.keys(user['answers']) : [];
   const unansweredIds = user ? getUnanswered(Object.keys(questions), answeredIds) : [];
   return {
+    loggedOut: authedUser === null ,
     answeredIds: sortByTime(questions, answeredIds),
     unansweredIds: sortByTime(questions, unansweredIds)
   }

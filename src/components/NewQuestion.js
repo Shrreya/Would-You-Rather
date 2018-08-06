@@ -43,6 +43,15 @@ class NewQuestion extends Component {
 
   render() {
 
+    if (this.props.loggedOut) {
+      return <Redirect to={{
+        pathname: '/',
+        state: {
+          afterLogin: '/add'
+        }
+      }} />
+    }
+
     const { optionOneText, optionTwoText, toHome } = this.state;
 
     if (toHome) {
@@ -82,4 +91,10 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion);
+function mapStateToProps({ authedUser }) {
+  return {
+    loggedOut: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(NewQuestion);
