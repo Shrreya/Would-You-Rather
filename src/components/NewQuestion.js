@@ -4,14 +4,8 @@ import { Redirect } from 'react-router-dom';
 import { handleSaveQuestion } from '../actions/shared';
 import Nav from './Nav';
 import Button from '@material-ui/core/Button';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-// Override theme properties to be used by button components
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#00897B' }
-  }
-});
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { theme } from '../utils/theme';
 
 class NewQuestion extends Component {
 

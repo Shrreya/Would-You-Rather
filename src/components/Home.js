@@ -5,14 +5,8 @@ import Nav from './Nav';
 import Question from './Question';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-// Override theme properties to be used by tab components
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#00897B' }
-  }
-});
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { theme } from '../utils/theme';
 
 class Home extends Component {
 

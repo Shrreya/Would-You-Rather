@@ -3,20 +3,13 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setAuthedUser } from '../actions/authedUser';
 import user_question from '../assets/user_question.svg';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
-
-// Override theme properties to be used by select & button components
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#F85A6A' },
-    secondary: { main: '#00897B' }
-  }
-});
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { loginTheme as theme } from '../utils/theme';
 
 // Slide up transition for snackbar component
 function TransitionUp(props) {
