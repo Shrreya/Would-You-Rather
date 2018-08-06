@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Nav from './Nav';
 import { Line } from 'rc-progress';
 import check from '../assets/check.svg';
@@ -15,11 +16,21 @@ class QuestionPage extends Component {
 
   render() {
 
+    if (this.props.loggedOut) {
+      return <Redirect to={{
+        pathname: '/',
+        state: {
+          afterLogin: `/questions/${this.props.qid}`
+        }
+      }} />
+    }
+
     const { question } = this.props;
 
     if (question === null) {
       return (
         <div className='question-page'>
+          <Nav />
           <p>This question does not exist!</p>
         </div>
       );
@@ -91,6 +102,7 @@ function mapStateToProps({authedUser, questions, users}, props) {
   const { id } = props.match.params;
   const question = questions[id];
   return {
+    loggedOut: authedUser === null,
     qid: id,
     question: question ? formatQuestion(question, users, authedUser) : null
   }
