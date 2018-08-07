@@ -55,6 +55,7 @@ class Home extends Component {
           </div>
         </MuiThemeProvider>
         <div className='questions-container'>
+          {questionIds.length === 0 && <p>No questions here!</p>}
           <ul>
             {questionIds.map((id) => (
               <li key={id}>
