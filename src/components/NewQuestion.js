@@ -15,19 +15,11 @@ class NewQuestion extends Component {
     toHome: false
   }
 
-  handleOneChange = (e) => {
-    const optionOneText = e.target.value;
-    this.setState(() => ({
-      optionOneText
-    }));
-  }
-
-  handleTwoChange = (e) => {
-    const optionTwoText = e.target.value;
-    this.setState(() => ({
-      optionTwoText
-    }));
-  }
+  handleChange = name => e => {
+    this.setState({
+      [name]: e.target.value,
+    });
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -67,13 +59,13 @@ class NewQuestion extends Component {
           className='textarea'
           placeholder='Enter Option One Here'
           value={optionOneText}
-          onChange={this.handleOneChange}
+          onChange={this.handleChange('optionOneText')}
         />
         <textarea
           className='textarea'
           placeholder='Enter Option Two Here'
           value={optionTwoText}
-          onChange={this.handleTwoChange}
+          onChange={this.handleChange('optionTwoText')}
         />
         <MuiThemeProvider theme={theme}>
           <Button
