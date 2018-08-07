@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { prepareLeaderBoard } from '../utils/helpers';
 import Nav from './Nav';
+import LoginRedirect from './LoginRedirect';
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -30,12 +30,7 @@ class Leaderboard extends Component {
 
     // Redirect to login page if app is in logged out state
     if (this.props.loggedOut) {
-      return <Redirect to={{
-        pathname: '/',
-        state: {
-          afterLogin: '/leaderboard'
-        }
-      }} />
+      return <LoginRedirect afterLogin='/leaderboard'/>
     }
 
     const { leaderboard } = this.props;

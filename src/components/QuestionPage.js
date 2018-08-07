@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import Nav from './Nav';
+import LoginRedirect from './LoginRedirect';
 import { Line } from 'rc-progress';
 import check from '../assets/check.svg';
 import { handleAnswer } from '../actions/shared';
@@ -18,12 +18,7 @@ class QuestionPage extends Component {
 
     // Redirect to login page if app is in logged out state
     if (this.props.loggedOut) {
-      return <Redirect to={{
-        pathname: '/',
-        state: {
-          afterLogin: `/questions/${this.props.qid}`
-        }
-      }} />
+      return <LoginRedirect afterLogin={`/questions/${this.props.qid}`}/>
     }
 
     const { question } = this.props;

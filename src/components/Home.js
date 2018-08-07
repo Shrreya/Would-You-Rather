@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { sortByTime, getUnanswered } from '../utils/helpers';
 import Nav from './Nav';
+import LoginRedirect from './LoginRedirect';
 import Question from './Question';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -26,12 +26,7 @@ class Home extends Component {
 
     // Redirect to login page if app is in logged out state
     if (this.props.loggedOut) {
-      return <Redirect to={{
-        pathname: '/',
-        state: {
-          afterLogin: '/home'
-        }
-      }} />
+      return <LoginRedirect afterLogin='/home'/>
     }
 
     const questionIds = this.state.value === 0
