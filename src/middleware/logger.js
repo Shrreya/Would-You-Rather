@@ -1,3 +1,5 @@
+// Logger middleware for every dispatched action and the corresponding state
+
 const logger = (store) => (next) => (action) => {
   console.group(action.type)
     console.log('The action: ', action)
