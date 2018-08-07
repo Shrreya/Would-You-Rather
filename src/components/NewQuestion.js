@@ -1,11 +1,16 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+// Action Creators
 import { handleSaveQuestion } from '../actions/shared';
+// Components
 import Nav from './Nav';
 import LoginRedirect from './LoginRedirect';
+// Material UI
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+// Utils
 import { theme } from '../utils/theme';
 
 class NewQuestion extends Component {

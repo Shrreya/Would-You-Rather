@@ -1,8 +1,11 @@
+// Packages
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
+// Action Creators
+import { handleInitialData } from '../actions/shared';
+// Components
 import Login from './Login';
 import Home from './Home';
 import QuestionPage from './QuestionPage';

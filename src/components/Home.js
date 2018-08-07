@@ -1,9 +1,13 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// Utils
 import { sortByTime, getUnanswered } from '../utils/helpers';
+// Components
 import Nav from './Nav';
 import LoginRedirect from './LoginRedirect';
 import Question from './Question';
+// Material UI
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { MuiThemeProvider } from '@material-ui/core/styles';

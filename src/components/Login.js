@@ -1,14 +1,19 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+// Action Creators
 import { setAuthedUser } from '../actions/authedUser';
+// Assets
 import user_question from '../assets/user_question.svg';
+// Material UI
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+// Utils
 import { loginTheme as theme } from '../utils/theme';
 
 // Slide up transition for snackbar component

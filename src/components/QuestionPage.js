@@ -1,10 +1,15 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Line } from 'rc-progress';
+// Components
 import Nav from './Nav';
 import LoginRedirect from './LoginRedirect';
-import { Line } from 'rc-progress';
+// Assets
 import check from '../assets/check.svg';
+// Action Creators
 import { handleAnswer } from '../actions/shared';
+// Utils
 import { getPercentVotes, formatQuestion } from '../utils/helpers';
 
 class QuestionPage extends Component {

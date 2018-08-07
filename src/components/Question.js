@@ -1,11 +1,14 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+// Utils
 import { formatDate } from '../utils/helpers';
+import { theme } from '../utils/theme';
+// Material UI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { theme } from '../utils/theme';
 
 class Question extends Component {
 

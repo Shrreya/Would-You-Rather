@@ -1,8 +1,12 @@
+// Packages
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// Utils
 import { prepareLeaderBoard } from '../utils/helpers';
+// Components
 import Nav from './Nav';
 import LoginRedirect from './LoginRedirect';
+// Material UI
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
