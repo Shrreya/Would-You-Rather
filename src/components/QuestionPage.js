@@ -16,6 +16,7 @@ class QuestionPage extends Component {
 
   render() {
 
+    // Redirect to login page if app is in logged out state
     if (this.props.loggedOut) {
       return <Redirect to={{
         pathname: '/',
