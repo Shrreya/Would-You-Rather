@@ -65,7 +65,7 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, authedUser }) {
+const mapStateToProps = ({ questions, users, authedUser }) => {
   const user = users[authedUser];
   const answeredIds = user ? Object.keys(user['answers']) : [];
   const unansweredIds = user ? getUnanswered(Object.keys(questions), answeredIds) : [];
@@ -74,6 +74,6 @@ function mapStateToProps({ questions, users, authedUser }) {
     answeredIds: sortByTime(questions, answeredIds),
     unansweredIds: sortByTime(questions, unansweredIds)
   }
-}
+};
 
 export default connect(mapStateToProps)(Home);

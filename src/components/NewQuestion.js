@@ -80,10 +80,8 @@ class NewQuestion extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    loggedOut: authedUser === null
-  }
-}
+const mapStateToProps = ({ authedUser }) => ({
+  loggedOut: authedUser === null
+});
 
 export default connect(mapStateToProps)(NewQuestion);

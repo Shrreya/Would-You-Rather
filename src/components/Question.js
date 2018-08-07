@@ -40,7 +40,7 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({ questions, users }, { id }) {
+const mapStateToProps = ({ questions, users }, { id }) => {
   const question = questions[id];
   return {
     authorName: users[question['author']]['name'],
@@ -48,6 +48,6 @@ function mapStateToProps({ questions, users }, { id }) {
     date: formatDate(question['timestamp']),
     optionPreview: question['optionOne']['text']
   }
-}
+};
 
 export default connect(mapStateToProps)(Question);

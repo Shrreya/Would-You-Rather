@@ -94,7 +94,7 @@ class QuestionPage extends Component {
   }
 }
 
-function mapStateToProps({authedUser, questions, users}, props) {
+const mapStateToProps = ({authedUser, questions, users}, props) => {
   const { id } = props.match.params;
   const question = questions[id];
   return {
@@ -102,6 +102,6 @@ function mapStateToProps({authedUser, questions, users}, props) {
     qid: id,
     question: question ? formatQuestion(question, users, authedUser) : null
   }
-}
+};
 
 export default connect(mapStateToProps)(QuestionPage);

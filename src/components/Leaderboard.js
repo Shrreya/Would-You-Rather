@@ -76,11 +76,9 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps({ users, authedUser }) {
-  return {
+const mapStateToProps = ({ users, authedUser }) => ({
     loggedOut: authedUser === null ,
     leaderboard : prepareLeaderBoard(users)
-  }
-}
+});
 
 export default connect(mapStateToProps)(Leaderboard);
