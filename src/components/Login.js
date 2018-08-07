@@ -12,9 +12,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { loginTheme as theme } from '../utils/theme';
 
 // Slide up transition for snackbar component
-function TransitionUp(props) {
-  return <Slide {...props} direction="up" />;
-}
+const TransitionUp = (props) => ( <Slide {...props} direction="up" /> );
 
 class Login extends Component {
 
