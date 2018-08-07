@@ -1,13 +1,7 @@
-import { getInitialData } from '../utils/api';
-import { receiveUsers } from '../actions/users';
-import { receiveQuestions } from '../actions/questions';
+import { getInitialData, saveQuestionAnswer, saveQuestion } from '../utils/api';
+import { receiveUsers, userAnswer, userQuestion } from '../actions/users';
+import { receiveQuestions, questionAnswer, addQuestion } from '../actions/questions';
 import { showLoading, hideLoading } from 'react-redux-loading';
-import { saveQuestionAnswer } from '../utils/api';
-import { questionAnswer } from '../actions/questions';
-import { userAnswer } from '../actions/users';
-import { saveQuestion } from '../utils/api';
-import { addQuestion } from '../actions/questions';
-import { userQuestion } from '../actions/users';
 
 export function handleInitialData () {
   return (dispatch) => {
@@ -31,7 +25,7 @@ export function handleAnswer (qid, answer) {
     })
       .then(() => {
         dispatch(questionAnswer({authedUser, qid, answer}));
-        dispatch(userAnswer({authedUser, qid, answer}))
+        dispatch(userAnswer({authedUser, qid, answer}));
       })
   }
 }
