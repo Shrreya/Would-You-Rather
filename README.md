@@ -23,3 +23,23 @@ To simplify the development process, Udacity has provided a pseudo backend serve
 ## Important
 
 As the app works with a pseudo backend server, there is no data persistence and hence, any new questions or answers will be lost by performing a browser refresh.
+
+## Preview
+
+1. **Login**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/Login.png" />
+
+2. **Home**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/Home.png" />
+
+3. **Question**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/Question.png" />
+
+4. **Answer**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/Answer.png" />
+
+5. **New Question**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/New%20Question.png" />
+
+6. **Leaderboard**
+<img src="https://github.com/Shrreya/Would-You-Rather/blob/master/screenshots/Leaderboard.png" />
